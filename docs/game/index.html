@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="stylesheet" href="/game/reset.css"/><link rel="stylesheet" href="/assets/css/theme-dark.css"/><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/><title>Jogo da Memória</title><style>.login-form{align-items:center;display:flex;flex-direction:column;height:100dvh;justify-content:center}.login__header{align-items:center;display:flex;flex-direction:column;justify-content:center;margin-bottom:50px;& img{width:250px}& h1{font-size:1.5em}.logo{width:300px;max-width:100%}}.LuLu{width:2rem!important}.login__input{border:2px solid #333;border-radius:8px;color:#333;font-size:1em;margin-bottom:15px;max-width:300px;outline:0;padding:15px;width:100%}.login__button{background-color:#73b3d0;border:3px solid #2c74d3;border-radius:8px;color:#fff;cursor:pointer;font-size:1em;max-width:300px;padding:15px;width:100%}.login__button:disabled{background-color:#eee;border:2px solid #969595;color:#aaa;cursor:auto}body{background-color:#f4f4f4}a{text-align:center;text-decoration:none;cursor:pointer}p:nth-of-type(2){margin-top:15px}</style><script src="/assets/js/settings.js"></script><script defer src="/assets/js/sw-register.js"></script></head><body class="game"><form class="login-form"><div class="login__header"><a href="/"><img class="logo" src="/assets/images/logo.webp" alt="logo"/></a><br/><img
+          class="LuLu"
+          src="/assets/images/luluzinha/neutral.svg"
+          alt="Luluzinha"/><br/><h1>Jogo</h1><h3>Da</h3><h1>Memória</h1></div><div id="score"><h4>Ultima pontuação:</h4><br/><p><span class="pname">Ninguém</span> | Tempo:
+          <span class="ptime">???</span></p><br/><br/></div><input  placeholder="Nome" class="login__input"/><button type="submit" class="login__button play" disabled>Jogar</button><br/><a class="login__button" href="/">Home</a></form><script>
+      const input = document.querySelector(".login__input");
+      const button = document.querySelector(".play");
+      const form = document.querySelector(".login-form");
+      const pname = document.querySelector(".pname");
+      const ptime = document.querySelector(".ptime");
+      const scoreDiv = document.getElementById("score");
+
+      const validateInput = () => {
+        if (input.value.length > 1) {
+          button.removeAttribute("disabled");
+          return;
+        }
+
+        button.setAttribute("disabled", "");
+      };
+
+      const handleSubmit = (event) => {
+        event.preventDefault();
+
+        localStorage.player = input.value;
+        window.location = "play.html";
+      };
+
+      input.value = configs.name;
+      validateInput();
+      input.addEventListener("input", validateInput);
+      form.addEventListener("submit", handleSubmit);
+
+      if (localStorage.player && localStorage.record) {
+        pname.innerHTML = localStorage.player;
+        ptime.innerHTML = localStorage.record + "s";
+      } else {
+        scoreDiv.style.display = "none";
+      }
+    </script><script>
+      const root = document.getElementsByTagName("html")[0];
+      if (configs.darkTheme) {
+        root.classList.add("dark-mode");
+      } else {
+        root.classList.remove("dark-mode");
+      }
+    </script></body></html>

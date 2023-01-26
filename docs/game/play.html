@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Jogo da Memória</title><link rel="stylesheet" href="/game/reset.css"/><link rel="stylesheet" href="/assets/css/theme-dark.css"/><link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/><script defer src="/assets/js/sw-register.js"></script><style>main{display:flex;flex-direction:column;width:100%;background-image:url("/assets/images/bg.avif");background-size:cover;min-height:100vh;align-items:center;justify-content:center;padding:10px 10px 25px}header{display:flex;align-items:center;justify-content:space-between;background-color:rgba(255,255,255,0.8);font-size:1em;width:100%;max-width:800px;padding:30px;margin:0 0 30px;border-radius:5px}.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:15px;width:100%;max-width:1200px;margin:0 auto}.card{aspect-ratio:3/4;width:100%;border-radius:5px;position:relative;transition:all 400ms ease;transform-style:preserve-3d;background-color:#ccc;border-radius:10px}.face{width:100%;height:100%;position:absolute;background-size:cover;background-position:center;border:4px solid #2543a9;border-radius:10px;transition:all 400ms ease}.front{transform:rotateY(180deg);background-size:contain;background-repeat:no-repeat}.back{background-image:url("/assets/images/luluzinha/back.avif");backface-visibility:hidden}.reveal-card{transform:rotateY(180deg)}.disabled-card{filter:saturate(0);opacity:.5}@media screen and (max-width:920px){.grid{grid-template-columns:repeat(4,1fr)}.disabled-card{scale:1!important}.reveal-card{scale:1.25}}.gameStatus{color:#fff;background-color:#000000c4;padding:15px;text-align:center;margin:auto!important;& a{text-decoration:none;color:#3eb5cc;&:hover{color:#00aeff}}}</style><script src="/assets/js/settings.js"></script></head><body class="game"><main><header><span class="player"></span><div><span class="timer">0</span><span> segundos</span></div></header><div class="grid"></div><br/><br/><dialog class="gameStatus"><span class="statusSpan">Placeholder</span></dialog></main><script>
+      const grid = document.querySelector(".grid");
+      const spanPlayer = document.querySelector(".player");
+      const statusDialog = document.querySelector(".gameStatus");
+      const timer = document.querySelector(".timer");
+
+      const characters = [
+        "angry",
+        "happy",
+        "neutral",
+        "sad",
+        "thinking",
+        "hello",
+      ];
+
+      const createElement = (tag, className) => {
+        const element = document.createElement(tag);
+        element.className = className;
+        return element;
+      };
+
+      let firstCard = "";
+      let secondCard = "";
+
+      const checkEndGame = () => {
+        const disabledCards = document.querySelectorAll(".disabled-card");
+
+        if (disabledCards.length === 12) {
+          clearInterval(this.loop);
+          statusDialog.showModal();
+          statusDialog.innerHTML = `Parabéns, ${spanPlayer.innerHTML}! <br><br> Seu tempo foi de: ${timer.innerHTML} segundos <br><br><a href="/game/index.html"><p>Clique aqui para voltar</p></a>`;
+          localStorage.record = timer.innerHTML;
+        }
+      };
+
+      const checkCards = () => {
+        const firstCharacter = firstCard.getAttribute("data-character");
+        const secondCharacter = secondCard.getAttribute("data-character");
+
+        if (firstCharacter === secondCharacter) {
+          firstCard.firstChild.classList.add("disabled-card");
+          secondCard.firstChild.classList.add("disabled-card");
+
+          firstCard = "";
+          secondCard = "";
+
+          checkEndGame();
+        } else {
+          setTimeout(() => {
+            firstCard.classList.remove("reveal-card");
+            secondCard.classList.remove("reveal-card");
+
+            firstCard = "";
+            secondCard = "";
+          }, 500);
+        }
+      };
+
+      const revealCard = ({ target }) => {
+        if (target.parentNode.className.includes("reveal-card")) {
+          return;
+        }
+
+        if (firstCard === "") {
+          target.parentNode.classList.add("reveal-card");
+          firstCard = target.parentNode;
+        } else if (secondCard === "") {
+          target.parentNode.classList.add("reveal-card");
+          secondCard = target.parentNode;
+
+          checkCards();
+        }
+      };
+
+      const createCard = (character) => {
+        const card = createElement("div", "card");
+        const front = createElement("div", "face front");
+        const back = createElement("div", "face back");
+
+        front.style.backgroundImage = `url('/assets/images/luluzinha/${character}.svg')`;
+
+        card.appendChild(front);
+        card.appendChild(back);
+
+        card.addEventListener("click", revealCard);
+        card.setAttribute("data-character", character);
+
+        return card;
+      };
+
+      const loadGame = () => {
+        const duplicateCharacters = [...characters, ...characters];
+
+        const shuffledArray = duplicateCharacters.sort(
+          () => Math.random() - 0.5
+        );
+
+        shuffledArray.forEach((character) => {
+          const card = createCard(character);
+          grid.appendChild(card);
+        });
+      };
+
+      const startTimer = () => {
+        this.loop = setInterval(() => {
+          const currentTime = +timer.innerHTML;
+          timer.innerHTML = currentTime + 1;
+        }, 1000);
+      };
+
+      window.onload = () => {
+        spanPlayer.innerHTML = localStorage.player;
+        startTimer();
+        loadGame();
+      };
+    </script><script>
+      const root = document.getElementsByTagName("html")[0];
+      if (configs.darkTheme) {
+        root.classList.add("dark-mode");
+      } else {
+        root.classList.remove("dark-mode");
+      }
+    </script></body></html>

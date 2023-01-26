@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reset | Tarefa Educação</title>
+  </head>
+  <body>
+    <h1>Redefinindo e reconfigurando o site...</h1>
+    <h1>Por favor aguarde!</h1>
+    <script>
+      // Close other tabs
+      if (navigator.serviceWorker.controller) {
+        navigator.serviceWorker.controller.postMessage("closeAllTabs");
+      }
+
+      // Unregister all service workers
+      navigator.serviceWorker
+        ?.getRegistrations()
+        .then(function (registrations) {
+          for (let registration of registrations) registration.unregister();
+        });
+
+      // Clear all caches
+      // caches.keys().then(function(names) {
+      //   for (let name of names) caches.delete(name);
+      // });
+
+      // Clear all local storage and session storage
+      // localStorage.clear();
+      // sessionStorage.clear();
+
+      const handleForcedUpdate = () => {
+        // Delete the cache
+        console.log("Deleting the cache...");
+        caches.delete("cache");
+
+        // Start caching process
+        console.log("Calling the Update Worker...");
+
+        const worker = new Worker(
+          "/assets/js/workers/update-worker.js?v=gambiarra"
+        );
+
+        worker.postMessage("letsUpdate");
+        worker.onmessage = (e) => {
+          if (e.data == "done") {
+            location.href = "/";
+          }
+        };
+      };
+
+      handleForcedUpdate();
+    </script>
+  </body>
+</html>

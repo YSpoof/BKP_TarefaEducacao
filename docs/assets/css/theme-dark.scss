@@ -1,0 +1,179 @@
+$dark0: #111111;
+$dark1: #191919;
+$dark2: #2e2e2e;
+$dark3: #393939;
+$dark4: #4a4a4a;
+$dark5: #777777;
+$white: #fff;
+$white2: #e3e3e3;
+$gray: #959595;
+$menuDarkBG: rgba(0, 0, 0, 0.85);
+
+.dark-mode {
+  .settingsControls > span {
+    color: $white !important;
+  }
+
+  body {
+    background-color: $dark1 !important;
+    color: $white !important;
+    cursor: url("/assets/images/icons/pencil-white.png") 1 23, auto;
+  }
+
+  input,
+  textarea {
+    color: $white !important;
+    background-color: $dark3 !important;
+    color: $white !important;
+    &::placeholder {
+      color: $gray !important;
+    }
+  }
+
+  img {
+    filter: brightness(90%);
+  }
+
+  dialog {
+    background-color: $menuDarkBG !important;
+    color: $white !important;
+    a {
+      color: $gray !important;
+      &:hover {
+        color: $white !important;
+      }
+    }
+    &::backdrop {
+      background-color: rgba(0, 0, 0, 0.75);
+    }
+  }
+
+  svg {
+    background-color: $white !important;
+  }
+
+  .navbar-brand {
+    img {
+      filter: none !important;
+    }
+  }
+
+  .card {
+    background-color: $dark2 !important;
+    .card-title {
+      color: $white !important;
+      span {
+        color: inherit !important;
+      }
+    }
+    .card-text {
+      color: $white !important;
+    }
+    .card-footer {
+      // I NEED TO REMOVE THAT LATER
+      background-color: $dark2 !important;
+    }
+    .wrapfooter {
+      color: $white !important;
+    }
+  }
+
+  .sidebar {
+    background-color: $dark2 !important;
+  }
+
+  .hamburger-bar {
+    &:before,
+    &:after {
+      background-color: $white !important;
+    }
+  }
+
+  .navigation {
+    span {
+      color: $white !important;
+    }
+    a {
+      color: $white !important;
+      background-color: $dark3 !important;
+    }
+  }
+
+  .footer {
+    background-color: $dark2 !important;
+  }
+
+  #submitBtn {
+    background-color: $dark2 !important;
+    color: $white !important;
+    border-color: $white !important;
+    &:hover {
+      background-color: $dark3 !important;
+    }
+  }
+
+  // Share DirtyFixes
+  .share {
+    #shareFB {
+      filter: invert(100%) !important;
+    }
+    #shareLNK {
+      filter: invert(100%) !important;
+    }
+  }
+
+  // End Share DirtyFixes
+
+  // Cookie Notice
+  #cookieNotice {
+    background-color: $dark4 !important;
+    color: $white !important;
+    a {
+      color: $white !important;
+      &:hover {
+        color: $dark5 !important;
+      }
+    }
+    input {
+      border: 1px solid $dark0 !important;
+      &:hover {
+        color: $dark5 !important;
+      }
+    }
+  }
+  // End Cookie Notice
+
+  // Socials
+  .socials {
+    a:first-child,
+    a:last-child {
+      img {
+        filter: invert(100%) !important;
+      }
+    }
+  }
+
+  // Premium fixes #DirtyFix
+  .linkpremium {
+    color: rgb(207, 176, 0) !important;
+    &:hover {
+      color: gold !important;
+    }
+  }
+  .activityDownload {
+    color: black !important;
+  }
+  // End Premium fixes #DirtyFix
+
+  .ignore-dark-mode {
+    color: inherit !important;
+    background-color: inherit !important;
+  }
+
+  #loaderContainer {
+    background-color: $dark1 !important;
+    #loaderText {
+      color: $white !important;
+    }
+  }
+}
