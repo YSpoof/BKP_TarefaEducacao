@@ -1,0 +1,1 @@
+#to-top{display:none;opacity:0;transition:allow-discrete .3s}#to-top.show{display:block;opacity:1}@starting-style{#to-top{opacity:0}}.fade-enter-active,.fade-leave-active{transition:opacity .5s ease}.fade-enter-from,.fade-leave-to{opacity:0}

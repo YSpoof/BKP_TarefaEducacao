@@ -1,0 +1,1 @@
+import{d as e,E as o}from"./DnacoLQE.js";const a=e({__name:"[...notFound]",setup(s){throw o({statusCode:404,statusMessage:"Page not found",message:"A página que você está procurando não existe."})}});export{a as default};
