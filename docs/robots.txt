@@ -1,0 +1,7 @@
+User-agent: *
+Sitemap: https://tarefaedu.lzart.com.br/sitemap.xml
+Disallow: /contact-success/
+Disallow: /401.html
+Disallow: /403.html
+Disallow: /404.html
+Disallow: /50x.html
