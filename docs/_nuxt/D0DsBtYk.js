@@ -1,0 +1,1 @@
+import{d as e,C as o}from"./ivYw-CIB.js";const a=e({__name:"[...notFound]",setup(s){throw o({statusCode:404,statusMessage:"Page not found",message:"A página que você está procurando não existe."})}});export{a as default};
