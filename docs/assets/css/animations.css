@@ -1,0 +1,58 @@
+@view-transition {
+  navigation: auto;
+}
+
+/* KeyFrames */
+@keyframes enterScreen {
+  from {
+    translate: 0 30%;
+    opacity: 0.1;
+    filter: saturate(0.1);
+  }
+  to {
+    translate: 0 0;
+    opacity: 1;
+    filter: saturate(1);
+  }
+}
+
+@keyframes gelatin {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+
+  25% {
+    transform: scale(0.9, 1.06);
+  }
+  50% {
+    transform: scale(1.06, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.04);
+  }
+}
+
+/* Others */
+
+.gelatin:hover {
+  animation: gelatin 0.7s ease;
+}
+
+.post-grid-item {
+  transition: all 0.3s ease;
+  animation: enterScreen linear;
+  animation-timeline: view(block);
+  animation-range: entry 0% entry 25%;
+}
+
+*:has(.post-grid-item:hover, .post-grid-item:focus-within) {
+  .post-grid-item:not(:hover, :focus-within) {
+    opacity: 0.85;
+    scale: 0.98;
+  }
+  .post-grid-item:hover,
+  .post-grid-item:focus-within {
+    scale: 1.02;
+  }
+}

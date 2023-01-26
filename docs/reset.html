@@ -1,0 +1,24 @@
+<!doctype html><html lang=pt-BR><meta charset=UTF-8><meta content="width=device-width,initial-scale=1.0"name=viewport><link href=/assets/css/theme.css rel=stylesheet><link href=/manifest.json rel=manifest><meta content=#000000 name=theme-color><link href=/favicon.ico rel=icon><link href=/assets/images/pwa/ios.png rel=apple-touch-icon><link media="orientation: portrait"href=/assets/images/pwa/screenshot-portrait.png rel=apple-touch-startup-image><link media="orientation: landscape"href=/assets/images/pwa/screenshot-landscape.png rel=apple-touch-startup-image><title>Reset | Tarefa Educação</title><meta content="Eleventy v2.0.1"name=generator><meta content=Reset property=og:title><meta content=Luana name=author><meta content=pt_BR property=og:locale><meta content="Realizando o reset do site..."name=description><meta content="Realizando o reset do site..."property=og:description><meta content=https://tarefaedu.lzart.com.br/reset.html property=og:url><meta content="Tarefa Educação"property=og:site_name><meta content=https://tarefaedu.lzart.com.br/assets/images/default.webp property=og:image><meta content=website property=og:type><meta content=summary_large_image name=twitter:card><meta content=https://tarefaedu.lzart.com.br/assets/images/default.webp property=twitter:image><meta content=Home property=twitter:title><meta content=UZNkwBWtSx6Ejk5VE4GXm14B6bea4x_UGRzz2io-mi4 name=google-site-verification><script type=application/ld+json>
+    {
+      "@context": "https://schema.org",
+      
+      "@type": "WebSite",
+      
+      "description": "Por aqui você encontrará diversos conteúdos relacionados a área da educação",
+      "headline": "Home",
+      "image": "/assets/images/default.webp",
+      "name": "Tarefa Educação",
+      "publisher": {
+        "@type": "Organization",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "/assets/images/logo.webp"
+        }
+      },
+      "url": "/reset.html"
+    }
+  </script><style>progress{&::-webkit-progress-bar{border-radius:2px}&::-webkit-progress-value{background-color:#0249ad;border-radius:2px}}</style><body class="grid place-items-center h-screen text-center bg-[url('/assets/images/bg.avif')]"><div class="bg-black/75 rounded-xl backdrop-blur-sm h-full w-full max-h-[35%] max-w-[95%] md:max-w-[30%] flex justify-center flex-col p-4"><img alt="Logo Tarefa Eduação"src=/assets/images/logo.webp><div class=text-stone-400 id=content><h1 class="text-lg font-bold">Redefinindo e reconfigurando o site...</h1><p class=m-4>Por favor aguarde!</p><img alt="Icone spinner"class="mx-auto animate-spin"height=25 src=/assets/images/icons/spinner.svg width=25><progress class=m-4 id=progress max=100 value=0>Atualizando...</progress></div></div><script>try{if(navigator.serviceWorker.controller){navigator.serviceWorker.controller.postMessage(`closeAllTabs`)};navigator.serviceWorker?.getRegistrations().then((a=>{for(let b of a)b.unregister()}));const a=()=>{console.log(`Deleting the caches...`);caches.keys().then((a=>{for(let b of a)caches.delete(b)}));localStorage.clear();sessionStorage.clear();console.log(`Calling the Update Worker...`);const a=new Worker(`/assets/js/workers/update-worker.js`);a.postMessage(`letsUpdate`);a.onmessage=({data:a})=>{if(a==`done`){location.href=`/`};if(a==`increment`){progress.value+=1};if(a.size){progress.max=a.size}}};a()}catch(a){content.innerHTML=`
+      <h1 class="text-lg font-bold">Erro ao redefinir o site:</h1>
+      <p class="m-4 font-bold text-stone-200">${a.message}</p>
+      <p class="m-4">Retornando para a home...</p>
+      `;console.error(a);setTimeout(()=>{location.href=`/`},5000)}</script>

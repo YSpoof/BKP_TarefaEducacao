@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "br.com.lzart.tarefaedu.twa",
+      "sha256_cert_fingerprints": [
+        "04:D2:25:6F:DB:B6:92:8F:30:6F:28:F5:C5:31:8E:C6:C4:E8:69:6D:A7:47:F1:18:86:15:8E:AD:A2:23:B9:B5"
+      ]
+    }
+  }
+]
